@@ -48,6 +48,22 @@ void createHuffmanTree(TreeNode T[1000], int n)
 	{
 		printf("%d\t%d\t%d\t%d\t%d\n", i, T[i].weight, T[i].parent, T[i].lchild, T[i].rchild);
 	}
+	
+	int depth = 1;
+	int res = 0;
+	for(i = 1; i <= n; i++)
+	{
+		int k = i;
+		depth = 0;
+		while(T[k].parent!=-1)
+		{
+			depth++;
+			k = T[k].parent;
+		}
+		res += depth * T[i].weight;
+	}
+	
+	printf("total weight: %d", res);
 	printf("\n\n");
 	
 }
@@ -87,5 +103,5 @@ void selectMin(TreeNode *HT, int g, int *s1, int *s2)
 int main(void)
 {
 	TreeNode ht[1000];
-	createHuffmanTree(ht, 4);
+	createHuffmanTree(ht, 5);
 }
