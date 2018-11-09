@@ -1,8 +1,3 @@
-int min(int a, int b)
-{
-    return a>b?b:a;
-}
-
 int max(int a, int b)
 {
     return a>b?a:b;
@@ -14,7 +9,8 @@ int maxArea(int* height, int heightSize)
     
     while(left < right)
     {
-        res = max(res, min(height[right], height[left]) * (right - left));
+        //-max(-a, -b) = min(a, b)
+        res = max(res, -max(-height[right], height[left]) * (left - right));
         
         if(height[right] > height[left]) left++;
         else right--;
